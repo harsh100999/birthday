@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions Time </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fff0f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            max-width: 600px;
+            border: 10px solid transparent;
+            background-color: #ffccdd;
+        }
+        .question {
+            margin: 20px 0;
+        }
+        .button {
+            background-color: #ff6699;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #cc3366;
+        }
+        .answers {
+            margin-top: 20px;
+            padding: 15px;
+            background: #ffebf2;
+            border-radius: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Questions Time 💖</h2>
+        <form id="romanticQuiz">
+            <div class="question">
+                <p>1. What do you love most about me? 💕</p>
+                <input type="radio" name="q1" value="Your kindness and care"> Your kindness and care 🥰<br>
+                <input type="radio" name="q1" value="Your sense of humor"> Your sense of humor 😄<br>
+                <input type="radio" name="q1" value="Your beautiful smile"> Your beautiful smile 😊<br>
+                <input type="radio" name="q1" value="Everything about you!"> Everything about you! 😍<br>
+            </div>
+            <div class="question">
+                <p>2. What should we do together to make our day special? 🌟</p>
+                <input type="radio" name="q2" value="Romantic dinner date"> Go on a romantic dinner date 🍽️<br>
+                <input type="radio" name="q2" value="Movie and cuddle"> Watch a movie and cuddle 🎬<br>
+                <input type="radio" name="q2" value="Walk under the stars"> Take a long walk under the stars ✨<br>
+                <input type="radio" name="q2" value="Adventure trip"> Have a fun adventure trip 🚗💨<br>
+            </div>
+            <div class="question">
+                <p>3. What is your idea of a perfect romantic evening? 🌙</p>
+                <input type="radio" name="q3" value="Cozy night at home"> A cozy night at home with candles and music 🕯️🎶<br>
+                <input type="radio" name="q3" value="Rooftop dinner"> A rooftop dinner under the stars 🌟🍷<br>
+                <input type="radio" name="q3" value="Beach walk"> A beach walk with the sound of waves 🌊💑<br>
+                <input type="radio" name="q3" value="Surprise getaway"> A surprise getaway trip ✈️❤️<br>
+            </div>
+            <div class="question">
+                <p>4. What is the sweetest way to express love? 💌</p>
+                <input type="radio" name="q4" value="Love letters"> Writing heartfelt love letters 💖<br>
+                <input type="radio" name="q4" value="Surprise gifts"> Giving thoughtful surprises 🎁<br>
+                <input type="radio" name="q4" value="Quality time"> Spending quality time together ⏳💕<br>
+                <input type="radio" name="q4" value="Hugs and kisses"> Expressing it with hugs and kisses 🤗💋<br>
+            </div>
+            <button type="submit" class="button">Submit Answers</button>
+        </form>
+        <div class="answers" id="answersDisplay">
+            <h3>Your Answers:</h3>
+            <p id="answer1"></p>
+            <p id="answer2"></p>
+            <p id="answer3"></p>
+            <p id="answer4"></p>
+            <a href="note.html" class="button">Next Page</a>
+        </div>
+    </div>
+    <script>
+        document.getElementById("romanticQuiz").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const answer1 = document.querySelector('input[name="q1"]:checked')?.value || "Not answered";
+            const answer2 = document.querySelector('input[name="q2"]:checked')?.value || "Not answered";
+            const answer3 = document.querySelector('input[name="q3"]:checked')?.value || "Not answered";
+            const answer4 = document.querySelector('input[name="q4"]:checked')?.value || "Not answered";
+            
+            document.getElementById("answer1").innerText = "1. What do you love most about me? " + answer1;
+            document.getElementById("answer2").innerText = "2. What should we do together to make our day special? " + answer2;
+            document.getElementById("answer3").innerText = "3. What is your idea of a perfect romantic evening? " + answer3;
+            document.getElementById("answer4").innerText = "4. What is the sweetest way to express love? " + answer4;
+            
+            document.getElementById("answersDisplay").style.display = "block";
+        });
+    </script>
+</body>
+</html>

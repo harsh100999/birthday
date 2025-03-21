@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fff0f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 50px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            margin: 20px;
+            max-width: 600px;
+            border: 10px solid transparent;
+            background-color: #ffccdd;
+        }
+        .button {
+            background-color: #ff6699;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #cc3366;
+        }
+        .gif-container {
+            margin-bottom: 20px;
+        }
+        .gif-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const canvas = document.createElement("canvas");
+            canvas.style.position = "absolute";
+            canvas.style.top = 0;
+            canvas.style.left = 0;
+            canvas.style.width = "100%";
+            canvas.style.height = "100%";
+            canvas.style.pointerEvents = "none";
+            document.body.appendChild(canvas);
+
+            const confetti = canvas.getContext("2d");
+            let particles = [];
+
+            function createParticle() {
+                return {
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 5 + 5,
+                    color: `hsl(${Math.random() * 360}, 100%, 70%)`,
+                    speedX: (Math.random() - 0.5) * 2,
+                    speedY: Math.random() * -3 - 1,
+                };
+            }
+
+            function updateParticles() {
+                confetti.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach((p, i) => {
+                    p.x += p.speedX;
+                    p.y += p.speedY;
+                    p.speedY += 0.05;
+                    confetti.fillStyle = p.color;
+                    confetti.beginPath();
+                    confetti.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    confetti.fill();
+                    if (p.y > canvas.height) particles.splice(i, 1, createParticle());
+                });
+                requestAnimationFrame(updateParticles);
+            }
+
+            function initConfetti() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                particles = Array.from({ length: 100 }, createParticle);
+                updateParticles();
+            }
+
+            initConfetti();
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday!</h1>
+        <div class="gif-container">
+            <img src="https://media.tenor.com/4CTY7XGy3oYAAAAM/milk-and-mocha-bears-dance-moves.gif" alt="Milk and Mocha Birthday GIF">
+        </div>
+        <div class="card">
+            <p>Wishing you a day filled with love, laughter, and happiness! 🎂🎉</p>
+            <a href="message.html" class="button">Read Message</a>
+        </div>
+    </div>
+</body>
+</html>

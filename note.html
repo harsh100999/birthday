@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Special Note</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fff0f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            max-width: 600px;
+            border: 10px solid transparent;
+            background-color: #ffccdd;
+        }
+        .button {
+            background-color: #ff6699;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #cc3366;
+        }
+        textarea {
+            width: 90%;
+            height: 100px;
+            border-radius: 5px;
+            padding: 10px;
+            border: 1px solid #ff6699;
+        }
+        .thank-you-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #ffebf2;
+            border-radius: 10px;
+            font-weight: bold;
+            color: #cc3366;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Write a Special Note for Me ❤️</h2>
+        <form id="noteForm">
+            <textarea id="note" placeholder="Write something sweet..."></textarea><br>
+            <button type="submit" class="button">Submit</button>
+        </form>
+        <div id="thankYouMessage" class="thank-you-message">
+            Thank you for your lovely words! You make my heart smile. 💖
+        </div>
+        <a href="cake.html" id="nextPageLink" class="button" style="display: none;">Next Page</a>
+    </div>
+
+    <script>
+        document.getElementById("noteForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const note = document.getElementById("note").value.trim();
+            if (note) {
+                document.getElementById("thankYouMessage").style.display = "block";
+                document.getElementById("nextPageLink").style.display = "inline-block";
+            } else {
+                alert("Please write something before submitting! 😊");
+            }
+        });
+    </script>
+</body>
+</html>

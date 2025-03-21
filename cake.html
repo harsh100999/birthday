@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Birthday Cake</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fff0f5;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            width: 400px;
+            background-color: #ffccdd;
+        }
+        .cake-container {
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .cake-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .message {
+            display: none;
+            font-size: 30px;
+            font-weight: bold;
+            color: #cc3366;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 2s ease-out;
+        }
+        .next-page {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 20px;
+            background: #cc3366;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: floatUp 3s linear infinite;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🎂 Your Birthday Cake 🎉</h2>
+        <p>Click the cake to celebrate! 🎁✨</p>
+        <div class="cake-container" onclick="celebrate()">
+            <img id="cake" src="https://media.istockphoto.com/id/1311461815/vector/illustration-vector-graphic-design-asset-of-cream-cake-suitable-for-multipurpose-content.jpg?s=612x612&w=0&k=20&c=JeNpdxUftEdYWWjPRiqUCWxYQs10Y8ulLy03RFNFdIE=" alt="Three Story Cake">
+        </div>
+    </div>
+    <div id="birthdayMessage" class="message">Happy Birthday Dear Bebu! 🎉🎂</div>
+    <div id="nextPage" class="next-page" onclick="goToNextPage()">➡️</div>
+
+    <script>
+        function celebrate() {
+            const message = document.getElementById("birthdayMessage");
+            message.style.display = "block";
+            for (let i = 0; i < 30; i++) {
+                createHeart();
+            }
+            setTimeout(() => {
+                message.style.opacity = "0";
+            }, 3000);
+            setTimeout(() => {
+                document.getElementById("nextPage").style.display = "block";
+            }, 4000);
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.top = "100vh";
+            heart.style.fontSize = Math.random() * 20 + 20 + "px";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+        }
+
+        function goToNextPage() {
+            window.location.href = "nextpage.html";
+        }
+    </script>
+</body>
+</html>
